@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Talentalls | Reclutamiento y selección de talento</title>
+  <meta name="description" content="Talentalls conecta empresas con talento calificado mediante procesos profesionales de reclutamiento y selección." />
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --surface: #ffffff;
+      --text: #18212b;
+      --muted: #5f6b7a;
+      --line: #dfe5ec;
+      --primary: #0f4c81;
+      --primary-dark: #0b3b64;
+      --accent: #eaf3fb;
+      --shadow: 0 18px 50px rgba(16, 35, 58, 0.10);
+      --radius: 18px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, #f8fbff 0%, var(--bg) 100%);
+      line-height: 1.55;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(248, 251, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(223, 229, 236, 0.75);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 16px 0;
+    }
+
+    .brand {
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+    }
+
+    .brand span { color: var(--primary); }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .nav-cta, .btn-primary, .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 13px 22px;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .nav-cta, .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .nav-cta:hover, .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      background: #f3f6fa;
+    }
+
+    .hero {
+      padding: 74px 0 44px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--primary);
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      font-size: clamp(2.3rem, 4.8vw, 4.2rem);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+    }
+
+    .hero p {
+      margin: 0 0 28px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 62ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .hero-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .hero-card {
+      background: var(--surface);
+      border: 1px solid rgba(223, 229, 236, 0.9);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .mini-label {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--primary);
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .metric {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .metric div {
+      background: #f8fbff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 4px;
+    }
+
+    section {
+      padding: 34px 0;
+    }
+
+    .section-title {
+      margin: 0 0 10px;
+      font-size: clamp(1.7rem, 2.4vw, 2.4rem);
+      letter-spacing: -0.03em;
+    }
+
+    .section-copy {
+      margin: 0 0 22px;
+      color: var(--muted);
+      max-width: 72ch;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(18, 34, 56, 0.05);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.15rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .about-grid, .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .list li {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px 16px;
+    }
+
+    .contact-box {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      margin-top: 0;
+    }
+
+    .contact-links {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .contact-link {
+      display: block;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+      font-weight: 600;
+    }
+
+    .contact-link small {
+      display: block;
+      color: var(--muted);
+      font-weight: 500;
+      margin-top: 3px;
+    }
+
+    .cta {
+      padding: 20px 0 70px;
+    }
+
+    .cta-panel {
+      background: linear-gradient(135deg, #0f4c81 0%, #16365a 100%);
+      color: #fff;
+      border-radius: 26px;
+      padding: 34px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-panel p {
+      margin: 8px 0 0;
+      color: rgba(255,255,255,0.86);
+      max-width: 60ch;
+    }
+
+    .cta-panel .btn-secondary {
+      background: #fff;
+      border: none;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 22px 0 40px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .cards,
+      .about-grid,
+      .contact-grid,
+      .cta-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-panel {
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        flex-wrap: wrap;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: center;
+        order: 3;
+      }
+
+      .nav-cta {
+        width: 100%;
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#inicio" class="brand">Talent<span>alls</span></a>
+      <nav class="nav-links">
+        <a href="#servicios">Servicios</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <a href="#contacto" class="nav-cta">Solicitar información</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Reclutamiento y selección de talento</span>
+          <h1>Conectamos empresas con el talento que necesitan para crecer.</h1>
+          <p>
+            En Talentalls ayudamos a identificar, evaluar y presentar perfiles alineados a las necesidades reales de cada negocio, con un enfoque ágil, profesional y orientado a resultados.
+          </p>
+          <div class="hero-actions">
+            <a href="#contacto" class="btn-primary">Solicitar información</a>
+            <a href="#servicios" class="btn-secondary">Ver servicios</a>
+          </div>
+          <div class="hero-points">
+            <span>• Atención a empresas</span>
+            <span>• Procesos ágiles</span>
+            <span>• Enfoque consultivo</span>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="mini-label">Nuestra propuesta</div>
+          <h2 style="margin:0 0 10px; font-size:1.6rem;">Selección confiable, clara y enfocada en resultados.</h2>
+          <p style="margin:0; color:var(--muted);">
+            Diseñamos procesos de reclutamiento según el perfil, nivel de responsabilidad y ritmo operativo de cada empresa.
+          </p>
+          <div class="metric">
+            <div>
+              <strong>Búsqueda dirigida</strong>
+              <span>Perfiles operativos, administrativos y especializados.</span>
+            </div>
+            <div>
+              <strong>Evaluación profesional</strong>
+              <span>Filtro de candidatos con criterios claros y consistentes.</span>
+            </div>
+            <div>
+              <strong>Comunicación cercana</strong>
+              <span>Acompañamiento durante todo el proceso de selección.</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="servicios">
+      <div class="container">
+        <h2 class="section-title">Servicios</h2>
+        <p class="section-copy">
+          Brindamos soluciones de reclutamiento adaptadas a la realidad operativa de cada cliente, priorizando calidad de perfil, rapidez y acompañamiento comercial.
+        </p>
+        <div class="cards">
+          <article class="card">
+            <h3>Reclutamiento y selección</h3>
+            <p>Identificación, evaluación y presentación de candidatos para posiciones operativas, mandos medios y roles estratégicos.</p>
+          </article>
+          <article class="card">
+            <h3>Búsqueda especializada</h3>
+            <p>Procesos focalizados para perfiles clave que requieren experiencia específica, mayor precisión y validación más exhaustiva.</p>
+          </article>
+          <article class="card">
+            <h3>Filtro y validación de perfiles</h3>
+            <p>Revisión curricular, entrevistas iniciales y análisis del encaje del candidato con la vacante y la cultura de la empresa.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="nosotros">
+      <div class="container about-grid">
+        <div>
+          <h2 class="section-title">Sobre Talentalls</h2>
+          <p class="section-copy">
+            Somos una firma orientada a conectar empresas con profesionales calificados mediante procesos de búsqueda y selección organizados, confiables y personalizados.
+          </p>
+          <p class="section-copy">
+            Trabajamos con una visión práctica del mercado laboral, cuidando tanto la experiencia del cliente como la calidad de los perfiles presentados.
+          </p>
+        </div>
+        <div>
+          <ul class="list">
+            <li><strong>Enfoque consultivo:</strong> comprendemos la necesidad real antes de iniciar cada búsqueda.</li>
+            <li><strong>Agilidad operativa:</strong> priorizamos tiempos de respuesta claros y coordinación constante.</li>
+            <li><strong>Presentación profesional:</strong> compartimos candidatos previamente evaluados y alineados al puesto.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="container contact-grid">
+        <div>
+          <h2 class="section-title">Contacto</h2>
+          <p class="section-copy">
+            Si deseas solicitar información sobre nuestros servicios, puedes escribirnos directamente por correo. También podemos añadir aquí un formulario o botón de WhatsApp en la siguiente versión.
+          </p>
+        </div>
+        <div class="contact-box">
+          <p>Canales de contacto disponibles:</p>
+          <div class="contact-links">
+            <a class="contact-link" href="mailto:info@talentalls.com">
+              info@talentalls.com
+              <small>Consultas generales</small>
+            </a>
+            <a class="contact-link" href="mailto:comercial@talentalls.com">
+              comercial@talentalls.com
+              <small>Información comercial</small>
+            </a>
+            <a class="contact-link" href="mailto:cpolar@talentalls.com">
+              cpolar@talentalls.com
+              <small>Ejecutiva de cuentas</small>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <div class="cta-panel">
+          <div>
+            <h2 style="margin:0; font-size:1.9rem;">¿Buscas apoyo para cubrir una vacante?</h2>
+            <p>Conversemos sobre el perfil que necesitas y te orientaremos sobre la mejor forma de iniciar el proceso.</p>
+          </div>
+          <a href="mailto:comercial@talentalls.com" class="btn-secondary">Escribir ahora</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Talentalls. Todos los derechos reservados.
+    </div>
+  </footer>
+</body>
+</html>
