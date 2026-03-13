@@ -386,6 +386,17 @@
   filter: grayscale(100%);
   transition: all 0.3s ease;
 }
+    @media (max-width: 768px) {
+  .client-logos {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 24px;
+  }
+
+  .client-logos img {
+    max-height: 72px;
+    width: auto;
+  }
+}
 
 .client-logos img:hover {
   opacity: 1;
