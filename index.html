@@ -405,7 +405,7 @@
     .cta-actions {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center; /* antes estaba flex-start */
   gap: 14px;
 }
 
@@ -424,9 +424,14 @@
   font-size: 13px;
   transition: 0.2s;
 }
+.cta-social svg {  
+  width: 18px;  
+  height: 18px;  
+}
 
 .cta-social a:hover {
   color: #ffffff;
+  transform: translateX(3px);
 }
 
 .btn-secondary {
